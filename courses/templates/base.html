@@ -18,9 +18,9 @@
  </ul>
  </div>
  <div id="content">
- {% block content %}
- {% endblock %}
+ {% block content %}{% endblock %}
  </div>
+ {% block include_js %}{% endblock %}
  <script>
  document.addEventListener('DOMContentLoaded', (event) => {
     // DOM loaded
