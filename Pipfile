@@ -9,6 +9,10 @@ pillow = "*"
 django-braces = "*"
 django-embed-video = "*"
 pymemcache = "*"
+django-debug-toolbar = "*"
+redis = "*"
+django-redisboard = "==8.3.0"
+attrs = "*"
 
 [dev-packages]
 

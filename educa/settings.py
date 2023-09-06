@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ta%s^nlbmuygh4!z&^*a(r*+t9n6q4oz64-jrv8$5kc6dt#)yx
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -40,12 +40,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'students.apps.StudentsConfig',
     'embed_video',
+    'debug_toolbar',
+    'redisboard',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    #'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
+    #'django.middleware.cache.FetchFromCacheMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -133,12 +138,44 @@ MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 CACHES = {
- 'default': {
- 'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
- 'LOCATION': '127.0.0.1:11211',
- }
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://127.0.0.1:6379',
+    }
 }
+
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 60 * 15 # 15 minutes
+CACHE_MIDDLEWARE_KEY_PREFIX = 'educa'
 
 # django.contrib.auth.views.login by default redirects you to accounts/profile/
 from django.urls import reverse_lazy
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
+
+##
+# Dev
+##
+
+#'debug_toolbar.middleware.DebugToolbarMiddleware',
+#'debug_toolbar',
+#path('__debug__/', include('debug_toolbar.urls')),
+
+INTERNAL_IPS = [
+ '127.0.0.1',
+] 
+
+import mimetypes
+mimetypes.add_type("application/javascript", ".js", True)
+
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
+
+def show_toolbar(request):
+    return True
+    
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
+    'INSERT_BEFORE': '</head>',
+    'INTERCEPT_REDIRECTS': False,
+    'RENDER_PANELS': True,
+}

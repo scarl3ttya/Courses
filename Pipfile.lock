@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "e4c5a2756bc800614bac16d11b9c9519dbb6bc4f2666d0538738a19a1b5ae377"
+            "sha256": "64eb0a43d4af2f6ad9743f21d83da85f63c924f6280489bf0db4f24a74def315"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -23,6 +23,14 @@
             ],
             "markers": "python_version >= '3.7'",
             "version": "==3.7.2"
+        },
+        "attrs": {
+            "hashes": [
+                "sha256:1f28b4522cdc2fb4256ac1a020c78acf9cba2c6b461ccd2c126f3aa8e8335d04",
+                "sha256:6279836d581513a26f1bf235f9acd333bc9115683f14f7e8fae46c98fc50e015"
+            ],
+            "index": "pypi",
+            "version": "==23.1.0"
         },
         "certifi": {
             "hashes": [
@@ -129,6 +137,14 @@
             "index": "pypi",
             "version": "==1.15.0"
         },
+        "django-debug-toolbar": {
+            "hashes": [
+                "sha256:af99128c06e8e794479e65ab62cc6c7d1e74e1c19beb44dcbf9bad7a9c017327",
+                "sha256:bc7fdaafafcdedefcc67a4a5ad9dac96efd6e41db15bc74d402a54a2ba4854dc"
+            ],
+            "index": "pypi",
+            "version": "==4.2.0"
+        },
         "django-embed-video": {
             "hashes": [
                 "sha256:a82097e160039796c9da08cef16b1aef23b319844839131d681174d019429fa5",
@@ -136,6 +152,14 @@
             ],
             "index": "pypi",
             "version": "==1.4.9"
+        },
+        "django-redisboard": {
+            "hashes": [
+                "sha256:23fc721ccf042d0b84b5eadd76b34b8e2f48f71e4842322a046dac1a29187890",
+                "sha256:955734d956987e478954b3daca0bc6aa1d11c896e10203f7e93ea4da0244edb2"
+            ],
+            "index": "pypi",
+            "version": "==8.3.0"
         },
         "idna": {
             "hashes": [
@@ -214,6 +238,14 @@
             ],
             "index": "pypi",
             "version": "==4.0.0"
+        },
+        "redis": {
+            "hashes": [
+                "sha256:06570d0b2d84d46c21defc550afbaada381af82f5b83e5b3777600e05d8e2ed0",
+                "sha256:5cea6c0d335c9a7332a460ed8729ceabb4d0c489c7285b0a86dbbf8a017bd120"
+            ],
+            "index": "pypi",
+            "version": "==5.0.0"
         },
         "requests": {
             "hashes": [
