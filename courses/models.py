@@ -24,8 +24,12 @@ class Course(models.Model):
     overview = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     students = models.ManyToManyField(User, blank=True ,related_name='courses_joined')
-
+    total_enrolled = models.PositiveIntegerField(default=0)
+    
     class Meta:
+        indexes = [
+            models.Index(fields=['-total_enrolled']),
+        ]
         ordering = ['-created']
 
     def __str__(self):

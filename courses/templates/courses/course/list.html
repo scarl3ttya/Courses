@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block title %}
-{% if subject %}
-{{ subject.title }} courses
-{% else %}
-All courses
-{% endif %}
+    {% if subject %}
+        {{ subject.title }} Courses
+    {% else %}
+        All Courses
+    {% endif %}
 {% endblock %}
 {% block content %}
 <h1>
 {% if subject %}
-{{ subject.title }} courses
+    {{ subject.title }} Courses
 {% else %}
-All courses
+    All Courses
 {% endif %}
 </h1>
 <div class="contents">
@@ -43,9 +43,10 @@ All courses
 </h3>
 <p>
     <a href="{% url "course_list_subject" subject.slug %}">{{ subject }}</a>.
-    {{ course.total_modules }} modules.
-    Instructor: {{ course.owner.get_full_name }}
-    </p>
+    {{ course.total_modules }} module{{ course.total_modules|pluralize }}
+    ({{ course.total_enrolled }} <i>student{{ course.total_enrolled|pluralize }} enrolled)
+    Instructor: {{ course.owner.get_full_name }} </i>
+</p>
     {% endwith %}
     {% endfor %}
     </div>
