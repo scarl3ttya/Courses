@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'students.apps.StudentsConfig',
+    'embed_video',
 ]
 
 MIDDLEWARE = [
@@ -129,3 +131,14 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+
+CACHES = {
+ 'default': {
+ 'BACKEND': 'django.core.cache.backends.memcached.PyMemcacheCache',
+ 'LOCATION': '127.0.0.1:11211',
+ }
+}
+
+# django.contrib.auth.views.login by default redirects you to accounts/profile/
+from django.urls import reverse_lazy
+LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
